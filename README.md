@@ -1,5 +1,7 @@
 # Election Result Whatsapp Message
 
+Election Result Whatsapp Message. Contains a Spin Wheel having names of different political parties. Contains a Whatsapp sharing button.
+
 ## Screenshots
 
 <table>
