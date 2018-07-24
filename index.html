@@ -1,8 +1,9 @@
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style type="text/css">
   
-  *{  margin:0; padding:0; }
+  *{  margin:0; padding:0;
+  font-size: 20px }
 
 body{
   background:#eaeaea;
@@ -272,17 +273,29 @@ opacity:0.1;
     animation: hh 0.1s;
 }
 
+span{
+  font-size: 12px;
+}
+
+h1{
+  font-size: 20px;
+  text-align: center;
+  color: black;
+}
+
 </style>
+<br>
+<h1>Who will win these elections?</h1>
 <div id="wrapper">
             
         <div id="wheel">
             <div id="inner-wheel">
-                <div class="sec"><span class="fa fa-bell-o"></span></div>
-                <div class="sec"><span class="fa fa-comment-o"></span></div>
-                <div class="sec"><span class="fa fa-smile-o"></span></div>
-                <div class="sec"><span class="fa fa-heart-o"></span></div>
-                <div class="sec"><span class="fa fa-star-o"></span></div>
-                <div class="sec"><span class="fa fa-lightbulb-o"></span></div>
+                <div class="sec"><span class="fa fa-bell-o"><p>MQM</p></span></div>
+                <div class="sec"><span class="fa fa-comment-o"><p>JI</p></span></div>
+                <div class="sec"><span class="fa fa-smile-o"><p>ANP</p></span></div>
+                <div class="sec"><span class="fa fa-heart-o"><p>PML-N</p></span></div>
+                <div class="sec"><span class="fa fa-star-o"><p>PPP</p></span></div>
+                <div class="sec"><span class="fa fa-lightbulb-o"><p>PTI</p></span></div>
             </div>       
            
             <div id="spin">
@@ -353,7 +366,7 @@ form fieldset input[type="text"], input[type="password"] {
 	<form style="right: 2px;">
                             <fieldset>
                                 <!-- JS because of IE support; better: placeholder="Username" -->
-                                <p><input onclick="WhatsappShare();" type="button" style="background-color: #01e675; color: black; font-family: Montserrat, sans-serif;" value="Share on Whatsapp"></p>
+                                <p><input type="button" style="background-color: #01e675; color: black; font-family: Montserrat, sans-serif;" value="Share on Whatsapp"></p>
                             </fieldset>
                         </form>
 </a>
