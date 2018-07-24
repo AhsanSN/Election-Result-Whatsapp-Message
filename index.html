@@ -1,151 +1,300 @@
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
 <style type="text/css">
-	.particlehead {
-  background: #abe1fd;
+  
+  *{  margin:0; padding:0; }
+
+body{
+  background:#eaeaea;
+  color:#fff;
+  font-size:18px;
+  font-family: 'Exo 2', sans-serif;
 }
 
-body {
-    background-color: #cfe9ef;
-    margin: 23px;
-    height: 100px;
+a{
+  color:#34495e;  
 }
 
-h1 {
-  font-size: 31px;
-  color: #ffffff;
-  font-family: Montserrat, sans-serif;
+
+
+
+/*WRAPPER*/
+#wrapper{ 
+  margin: 40px auto 0;  
+  width:266px; 
+  position:relative;
+}
+
+#txt{
+  color:#eaeaea;  
+}
+
+
+/*WHEEL*/
+#wheel{
+  width:250px;
+  height:250px;
+  border-radius:50%;  
+  position:relative;
+  overflow:hidden;
+  border:8px solid #fff;
+  box-shadow:rgba(0,0,0,0.2) 0px 0px 10px, rgba(0,0,0,0.05) 0px 3px 0px;
+  transform: rotate(0deg);
+}
+
+#wheel:before{
+  content:'';
+  position:absolute;
+  border:4px solid rgba(0,0,0,0.1);
+  width:242px;
+  height:242px;
+  border-radius:50%;
+  z-index:1000; 
+}
+
+#inner-wheel{
+  width:100%;
+  height:100%;
+  
+  -webkit-transition: all 6s cubic-bezier(0,.99,.44,.99);
+  -moz-transition:    all 6 cubic-bezier(0,.99,.44,.99);
+  -o-transition:      all 6s cubic-bezier(0,.99,.44,.99);
+  -ms-transition:     all 6s cubic-bezier(0,.99,.44,.99);
+  transition:         all 6s cubic-bezier(0,.99,.44,.99); 
+}
+
+#wheel div.sec{
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 130px 75px 0;
+  border-color: #19c transparent;
+  transform-origin: 75px 129px;
+  left:50px;
+  top:-4px; 
+  opacity:1;
+}
+
+#wheel div.sec:nth-child(1){
+  transform: rotate(60deg);
+  -webkit-transform: rotate(60deg);
+  -moz-transform: rotate(60deg);
+  -o-transform: rotate(60deg);
+  -ms-transform: rotate(60deg);
+  border-color: #16a085 transparent;  
+}
+#wheel div.sec:nth-child(2){
+  transform: rotate(120deg);
+  -webkit-transform: rotate(120deg);
+  -moz-transform: rotate(120deg);
+  -o-transform: rotate(120deg);
+  -ms-transform: rotate(120deg);
+  border-color: #2980b9 transparent;  
+}
+#wheel div.sec:nth-child(3){
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  border-color: #34495e transparent;  
+}
+#wheel div.sec:nth-child(4){
+  transform: rotate(240deg);
+  -webkit-transform: rotate(240deg);
+  -moz-transform: rotate(240deg);
+  -o-transform: rotate(240deg);
+  -ms-transform: rotate(240deg);
+  border-color: #f39c12 transparent;  
+}
+#wheel div.sec:nth-child(5){
+  transform: rotate(300deg);
+  -webkit-transform: rotate(300deg);
+  -moz-transform: rotate(300deg);
+  -o-transform: rotate(300deg);
+  -ms-transform: rotate(300deg);
+  border-color: #d35400 transparent;  
+}
+#wheel div.sec:nth-child(6){
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  border-color: #c0392b transparent;  
+}
+
+
+#wheel div.sec .fa{
+  margin-top: -100px;
+  color: rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 10000000;
+  display: block;
   text-align: center;
-  text-transform: uppercase;
-  font-weight: normal;
-  pointer-events: none;
-}
-
-h1 strong {
-  font-weight: 700;
-}
-
-h1 em {
-  font-family: 'Playfair Display', serif;
-  text-transform: lowercase;
-  font-style: italic;
+  font-size:36px;
+  margin-left:-15px;
+  
+  text-shadow: rgba(255, 255, 255, 0.1) 0px -1px 0px, rgba(0, 0, 0, 0.2) 0px 1px 0px;
 }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-body, html {
-  height: 100%;
-  overflow: hidden;
+#spin{
+  width:68px;
+  height:68px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin:-34px 0 0 -34px;
+  border-radius:50%;
+  box-shadow:rgba(0,0,0,0.1) 0px 3px 0px;
+  z-index:1000;
+  background:#fff;
+  cursor:pointer;
+  font-family: 'Exo 2', sans-serif;
+  
+  -webkit-user-select: none; 
+  -moz-user-select: none;    
+  -ms-user-select: none;     
+  -o-user-select: none;
+  user-select: none;   
 }
 
-.cow {
-  bottom: 0;
-  height: 112vw;
-  left: 0;
-  margin: auto;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100vw;
-  transform: scale(1);
-  animation: cow 15s infinite alternate linear;
+
+#spin:after{
+  content:"SPIN"; 
+  text-align:center;
+  line-height:68px;
+  color:#CCC;
+  text-shadow: 0 2px 0 #fff, 0 -2px 0 rgba(0,0,0,0.3) ;
+  position: relative;
+  z-index: 100000;
+  width:68px;
+  height:68px;
+  display:block;
 }
 
-#whole_head {
-  transform: translate(0, 1px);
-  animation: updown 0.8s infinite linear;
+#spin:before{
+  content:"";
+  position:absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 20px 28px 20px;
+  border-color: transparent transparent #ffffff transparent;
+  top:-12px;
+  left:14px;
 }
 
-#leg_left {
-  transform: translate(0, 1px);
-  animation: updown 0.4s infinite linear;
+#inner-spin{
+  width:54px;
+  height:54px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin:-27px 0 0 -27px;
+  border-radius:50%;
+  background:red;
+  z-index:999;
+  box-shadow:rgba(255,255,255,1) 0px -2px 0px inset, rgba(255,255,255,1) 0px 2px 0px inset,  rgba(0,0,0,0.4) 0px 0px 5px ;
+  
+  background: rgb(255,255,255); /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%, rgba(234,234,234,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(234,234,234,1))); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%,rgba(234,234,234,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%,rgba(234,234,234,1) 100%); /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%,rgba(234,234,234,1) 100%); /* IE10+ */
+  background: radial-gradient(ellipse at center,  rgba(255,255,255,1) 0%,rgba(234,234,234,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eaeaea',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */  
 }
 
-@keyframes cow {
-  to {
-    transform: scale(0);
+#spin:active #inner-spin{
+  box-shadow:rgba(0,0,0,0.4) 0px 0px 5px inset;
+}
+
+#spin:active:after{
+  font-size:15px; 
+}
+
+
+
+#shine{
+  width:250px;
+  height:250px;
+  position:absolute;
+  top:0;
+  left:0;
+  background: -moz-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%, rgba(255,255,255,0.99) 1%, rgba(255,255,255,0.91) 9%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(255,255,255,1)), color-stop(1%,rgba(255,255,255,0.99)), color-stop(9%,rgba(255,255,255,0.91)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+background: -webkit-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%,rgba(255,255,255,0.99) 1%,rgba(255,255,255,0.91) 9%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%,rgba(255,255,255,0.99) 1%,rgba(255,255,255,0.91) 9%,rgba(255,255,255,0) 100%); /* Opera 12+ */
+background: -ms-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%,rgba(255,255,255,0.99) 1%,rgba(255,255,255,0.91) 9%,rgba(255,255,255,0) 100%); /* IE10+ */
+background: radial-gradient(ellipse at center,  rgba(255,255,255,1) 0%,rgba(255,255,255,0.99) 1%,rgba(255,255,255,0.91) 9%,rgba(255,255,255,0) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+
+opacity:0.1;
+  
+}
+
+
+
+/*ANIMATION*/
+@-webkit-keyframes hh {
+  0%, 100%{
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+  }
+
+  50%{
+    transform: rotate(7deg);
+    -webkit-transform: rotate(7deg);
   }
 }
-@keyframes updown {
-  to {
-    transform: translate(0);
+
+@keyframes hh {
+   0%, 100%{
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+  }
+
+  50%{
+    transform: rotate(7deg);
+    -webkit-transform: rotate(7deg);
   }
 }
-html, body {
-  height: 100%;
-  overflow: hidden;
+
+.spin {
+  -webkit-animation: hh 0.1s; /* Chrome, Safari, Opera */
+    animation: hh 0.1s;
 }
 
-body {
-  background: #000;
-  perspective: 340px;
-}
-
-.stars {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 2px;
-  height: 2px;
-  box-shadow: -249px 422px #f7f7f7, 193px -97px #fafafa, -57px 28px #e3e3e3, -110px 412px #ededed, -74px -427px #f0f0f0, -556px -461px #d1d1d1, 736px -73px #cfcfcf, 176px 319px #d1d1d1, 730px 196px #cfcfcf, 699px 418px #c9c9c9, -638px -366px #e0e0e0, 475px -349px #f7f7f7, -125px 60px #d9d9d9, 30px -118px #dbdbdb, 541px 23px #e0e0e0, 659px -339px #f7f7f7, -38px -151px #cccccc, 354px -81px #d6d6d6, 169px -134px #cccccc, 371px -51px #e3e3e3, 158px -329px #d1d1d1, 122px -103px whitesmoke, 491px -231px #e8e8e8, 643px -124px #e0e0e0, 187px 8px #c9c9c9, 207px -419px #d6d6d6, 281px 129px #cccccc, -227px -33px #c2c2c2, 554px -459px #e0e0e0, -338px -306px whitesmoke, -265px 139px #f2f2f2, -466px -292px #d6d6d6, 372px -255px #f2f2f2, 374px -333px #cfcfcf, 548px -325px white, 11px -232px #cfcfcf, 329px 309px white, -80px -338px #e0e0e0, -415px -260px #f0f0f0, -495px -390px #e3e3e3, 128px -252px #dedede, -142px -440px #fcfcfc, 413px -309px #e3e3e3, -304px -172px #ebebeb, -439px 337px #dedede, -26px -237px #dedede, -111px -108px #fcfcfc, -134px -324px #f0f0f0, 602px 316px #ededed, 741px 132px #f7f7f7, 306px -330px #f0f0f0, 187px 229px #c9c9c9, -6px -91px #e3e3e3, 254px 42px #c4c4c4, -699px -259px #fafafa, 118px 237px #cccccc, -352px -153px #c4c4c4, 86px 40px #cfcfcf, 569px -477px #e6e6e6, 691px -265px white, 98px 61px #d4d4d4, -415px -275px #d6d6d6, -462px 229px #f7f7f7, 7px -23px #fafafa, -727px -407px #c2c2c2, -42px -218px #e3e3e3, 69px -285px #f0f0f0, -372px -190px #dbdbdb, -32px 96px white, 533px -398px #dedede, -54px 311px #c7c7c7, -247px -200px #f7f7f7, -742px -33px #c9c9c9, 39px -58px #cfcfcf, 259px 262px #c2c2c2, -122px -367px #cccccc, -498px 346px #cfcfcf, -359px 26px #e0e0e0, 66px 36px #ebebeb, 251px -238px #dbdbdb, -567px 372px #dedede, -727px 444px #cfcfcf, 88px -36px #ededed, -369px 137px #c4c4c4, 479px -244px #e0e0e0, -509px -236px #d1d1d1, 293px -143px #e0e0e0, -723px 187px #d4d4d4, -561px -305px #d4d4d4, 343px 285px white, 727px 306px #cfcfcf, 714px -229px #d1d1d1, -304px -346px #f7f7f7, 561px 320px #f2f2f2, 258px -166px #f2f2f2, 159px 190px #e8e8e8, 385px -176px #c9c9c9, -195px -58px #e6e6e6, 475px -13px #d4d4d4, -731px 260px #cccccc, -460px -395px #cfcfcf, 202px 310px #fcfcfc, 588px 30px #fafafa, 119px 378px #c7c7c7, -691px 62px #cccccc, -212px 34px whitesmoke, -567px 14px #ebebeb, 97px 460px #cccccc, -455px -227px #e3e3e3, 166px 268px white, -566px -271px #f0f0f0, -426px -111px whitesmoke, 499px -161px #c9c9c9, -649px -86px #d1d1d1, 685px -265px #d6d6d6, 695px 266px whitesmoke, 414px 468px #cccccc, -446px 58px #ebebeb, -205px 325px white, -589px -360px #c4c4c4, 718px 155px #fcfcfc, 295px 74px #ededed, -96px -233px #e0e0e0, 431px -125px #e8e8e8, 396px 400px #f2f2f2, 433px 457px #d4d4d4, -29px -96px #cccccc, -442px -198px #c9c9c9, -387px -325px #ededed, -232px -353px white, 319px -25px whitesmoke, 671px 475px #d4d4d4, -82px 111px #f0f0f0, -715px 394px #fafafa, -518px -413px #fafafa, 125px -199px white, -515px 20px #dbdbdb, 259px -63px #fcfcfc, 283px 341px #dbdbdb, 283px -184px #dbdbdb, -3px -3px #e0e0e0, 384px 211px #f0f0f0, 329px -227px #c9c9c9, 41px 412px #d9d9d9, 547px -198px #d4d4d4, -531px 347px #fcfcfc, 504px -259px #d4d4d4, -7px 137px #dbdbdb, 694px 399px #cfcfcf, -706px 340px #ebebeb, 488px 304px #f2f2f2, 499px -5px #e3e3e3, 466px 75px #e0e0e0, 433px 249px #e6e6e6, 580px 201px #f0f0f0, -115px -85px white, -467px -470px #c9c9c9, 172px 269px #e6e6e6, -283px -34px #e0e0e0, 52px -316px #c4c4c4, -511px -343px #f7f7f7, -689px -478px #c7c7c7, -615px -160px #c2c2c2, -161px 225px #d1d1d1, 496px -67px #e3e3e3, -22px -468px #c9c9c9, 472px -312px whitesmoke, 441px -212px #c4c4c4, 82px -261px #f2f2f2, 9px -308px #e6e6e6, 427px -282px #e6e6e6, 398px 70px #fafafa, -377px 258px #d9d9d9, -722px 212px whitesmoke, 415px 98px #ebebeb, -148px 447px white, -31px 145px #d6d6d6, -61px -161px #f0f0f0, 140px -296px #f2f2f2, -469px 171px #f0f0f0, -100px -44px #e0e0e0, 291px -79px #d9d9d9, 524px -359px #ebebeb, -157px 335px #e0e0e0, -170px 199px #c9c9c9, -681px 421px #cfcfcf, -88px 201px #d4d4d4, 369px 332px #d1d1d1, -607px -51px #ededed, 536px 469px #f7f7f7, 594px 106px #ebebeb, -446px 459px #fcfcfc, 568px -400px #e0e0e0, -87px 49px #c9c9c9, -41px -21px #c4c4c4, -65px 234px #cccccc, -312px 22px #cccccc, -146px -272px #ebebeb, -403px 14px #cfcfcf, -77px 409px #c2c2c2, 87px -91px #f0f0f0, 621px 376px #ededed, -228px 335px #c7c7c7, 516px -125px white, -591px -281px #c7c7c7, -65px 459px whitesmoke, -130px 417px #d1d1d1, 730px 264px #c4c4c4, -314px 364px #ebebeb, 183px -79px #f0f0f0, 717px -123px #fcfcfc, 401px -152px #cccccc, -485px 242px #c9c9c9, -488px -66px whitesmoke, -609px -313px #c7c7c7, -568px 219px whitesmoke, -266px 3px #cccccc, 637px -203px #c4c4c4, 652px -419px #e8e8e8, -221px -457px #c7c7c7, -455px -10px whitesmoke, -214px 170px #c2c2c2, -247px 280px #dedede, -366px -104px #ededed, 90px 336px #dedede, 146px 370px #e8e8e8, -483px -431px #e0e0e0, -130px -439px #ededed, 321px 252px #f7f7f7, 745px 292px #c2c2c2, 356px 230px #d4d4d4, -177px -289px #c2c2c2, 435px -301px #f0f0f0, 17px -285px #c9c9c9, -286px -11px #e6e6e6, 670px 158px white, 197px -97px #c9c9c9, -534px -245px #d6d6d6, 613px -173px #e6e6e6, 384px 94px #e3e3e3, 288px 209px #fafafa, 122px 478px #d1d1d1, 192px 169px #f7f7f7, -449px -108px #c9c9c9, 197px -262px #dbdbdb, -188px 427px #d6d6d6, 574px 224px #d1d1d1, -186px -150px #e0e0e0, -111px -109px #c2c2c2, 173px 285px #f2f2f2, -319px -440px #cccccc, 636px 421px #dbdbdb, 343px -306px #d4d4d4, 559px -439px #dedede, 56px -155px #dedede, -513px -44px #e8e8e8, 334px 354px #f0f0f0, -572px 60px #fcfcfc, -65px 170px #d6d6d6, 726px -408px #ebebeb, 194px 325px #e8e8e8, -727px -287px #e6e6e6, -480px -84px #d6d6d6, 209px -454px #e8e8e8, -581px -430px #c7c7c7, 495px -351px #e0e0e0, 546px 391px white, -182px 90px #e3e3e3, 276px 328px #c7c7c7, -551px -81px #fcfcfc, -300px 266px #e3e3e3, 478px 331px #d6d6d6, 609px 125px #c2c2c2, 697px -223px #ededed, 673px -352px #c7c7c7, 471px 177px #dbdbdb, 313px -391px #fcfcfc, -741px 36px #f2f2f2, -716px 310px #dedede, -704px -294px #e8e8e8, -89px 395px #fcfcfc, 576px 459px #e0e0e0, -696px 112px #cfcfcf, 646px 231px #f7f7f7, 378px -279px whitesmoke, 321px -49px #f2f2f2, 609px 450px #e0e0e0, 687px -160px #ebebeb, 707px -19px #e6e6e6, -658px -470px #c2c2c2, 196px -387px whitesmoke, -291px -338px #cccccc, -539px 289px #dbdbdb, 314px 445px #f7f7f7, 230px 444px #e3e3e3, 432px -316px #c9c9c9, -745px -151px #c9c9c9, 573px -149px #d9d9d9, 611px -359px #d1d1d1, -689px 392px #cccccc, 295px 243px #f7f7f7, -109px -362px #d9d9d9, -525px -35px #e0e0e0, 24px -87px #d4d4d4, -35px 87px #e0e0e0, 215px 5px #dbdbdb, 126px 370px #d1d1d1, 374px 10px #dbdbdb, -599px -48px #e0e0e0, -640px 418px #e3e3e3, -5px 162px #dedede, -666px 104px #e6e6e6, 588px -351px #dedede, 384px -10px #c9c9c9, 240px 383px #e6e6e6, -652px -227px #d1d1d1, 698px 69px #f2f2f2, 620px -171px #e3e3e3, 147px -436px #ededed, 111px -16px #c7c7c7, -517px -236px white, 394px 165px #d4d4d4, -682px -397px #e8e8e8, -258px -440px #d6d6d6, 478px 336px #f7f7f7, -576px -123px #d4d4d4, -295px -58px white, -348px 306px #ebebeb, 467px -279px #d9d9d9, -561px 290px #e8e8e8, -535px -453px #e3e3e3, 716px -14px #d9d9d9, -180px 253px white, -611px 36px #f0f0f0, 125px 53px #e8e8e8, -507px -81px #d4d4d4, -70px -83px #dbdbdb, -719px -144px #dedede, -350px -8px #ebebeb, -731px 366px #e3e3e3, -153px 298px whitesmoke, 85px 285px whitesmoke, -560px 395px #e6e6e6, -448px -170px #ededed, 738px 432px #e3e3e3, -742px 426px #e6e6e6, 692px 209px white, 520px -2px #f0f0f0, 552px -26px #c9c9c9, 233px 119px #dbdbdb, -302px 108px #cfcfcf;
-  animation: fly 3s linear infinite;
-  transform-style: preserve-3d;
-}
-.stars:before, .stars:after {
-  content: "";
-  position: absolute;
-  width: inherit;
-  height: inherit;
-  box-shadow: inherit;
-}
-.stars:before {
-  transform: translateZ(-300px);
-  opacity: 0.6;
-}
-.stars:after {
-  transform: translateZ(-600px);
-  opacity: 0.4;
-}
-
-@keyframes fly {
-  from {
-    transform: translateZ(0px);
-    opacity: 0.6;
-  }
-  to {
-    transform: translateZ(300px);
-    opacity: 1;
-  }
-}
 </style>
-
-
-<!--
-      WebGL particle head for a clients website. 
-      See the full result on fremtidenshoder.no. 
-      Made with three.js
--->
-
-<div class="particlehead"></div>
-<br>
-<h1><strong>Baqra Eid mubarak!</strong></h1>
-
-<h1><em>Warm and loving Eid wishes, may this festival shower you with love, peace and goodness warmth and togetherness. 
-
-Eid Mubarak!</em></h1>
-
+<div id="wrapper">
+            
+        <div id="wheel">
+            <div id="inner-wheel">
+                <div class="sec"><span class="fa fa-bell-o"></span></div>
+                <div class="sec"><span class="fa fa-comment-o"></span></div>
+                <div class="sec"><span class="fa fa-smile-o"></span></div>
+                <div class="sec"><span class="fa fa-heart-o"></span></div>
+                <div class="sec"><span class="fa fa-star-o"></span></div>
+                <div class="sec"><span class="fa fa-lightbulb-o"></span></div>
+            </div>       
+           
+            <div id="spin">
+                <div id="inner-spin"></div>
+            </div>
+            
+            <div id="shine"></div>
+        </div>
+        
+        
+        <div id="txt"></div>
+  </div>
 
 <!--
 concept:
@@ -209,29 +358,77 @@ form fieldset input[type="text"], input[type="password"] {
                         </form>
 </a>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-	document.getElementById("name").style.display = "none";
+	//set default degree (360*5)
+var degree = 1800;
+//number of clicks = 0
+var clicks = 0;
 
-	function showNameBox(){
-		if (document.getElementById("name").style.display == "none"){
-			document.getElementById("name").style.display = "block";
-		}
-		else if (document.getElementById("name").style.display == "block"){
-			if (document.getElementById("name").value !=""){
-				console.log("submitting");
-				document.getElementById("myForm").submit();
-			}
-			else{
-				document.getElementById("name").style.display = "none";
-			}
-		}
-	}
+$(document).ready(function(){
+  
+  /*WHEEL SPIN FUNCTION*/
+  $('#spin').click(function(){
+    
+    //add 1 every click
+    clicks ++;
+    
+    /*multiply the degree by number of clicks
+    generate random number between 1 - 360, 
+    then add to the new degree*/
+    var newDegree = degree*clicks;
+    var extraDegree = Math.floor(Math.random() * (360 - 1 + 1)) + 1;
+    totalDegree = newDegree+extraDegree;
+    
+    /*let's make the spin btn to tilt every
+    time the edge of the section hits 
+    the indicator*/
+    $('#wheel .sec').each(function(){
+      var t = $(this);
+      var noY = 0;
+      
+      var c = 0;
+      var n = 700;  
+      var interval = setInterval(function () {
+        c++;        
+        if (c === n) { 
+          clearInterval(interval);        
+        } 
+          
+        var aoY = t.offset().top;
+        $("#txt").html(aoY);
+        console.log(aoY);
+        
+        /*23.7 is the minumum offset number that 
+        each section can get, in a 30 angle degree.
+        So, if the offset reaches 23.7, then we know
+        that it has a 30 degree angle and therefore, 
+        exactly aligned with the spin btn*/
+        if(aoY < 23.89){
+          console.log('<<<<<<<<');
+          $('#spin').addClass('spin');
+          setTimeout(function () { 
+            $('#spin').removeClass('spin');
+          }, 100);  
+        }
+      }, 10);
+      
+      $('#inner-wheel').css({
+        'transform' : 'rotate(' + totalDegree + 'deg)'      
+      });
+     
+      noY = t.offset().top;
+      
+    });
+  });
+  
+  
+  
+});//DOCUMENT READY
+  
 
-	function whatsappShare(){
-		"https://api.whatsapp.com/send?phone=15551234567&text=I'm%20interested%20in%20your%20car%20for%20sale"
 
-	}
 
 </script>
 
